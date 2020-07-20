@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script type="text/javascript">
+        function validateFields()
+        {
+            var firstname = document.getElementById("fname");
+            var lastname = document.getElementById("lname");
+            var password = document.getElementById("pass");
+            var confirmPassword = document.getElementById("confirmPass");
+            var emailAddress = document.getElementById("emailAddress");
+            var phoneNumber = document.getElementById("phnNumber");
+            var date = document.getElementById("date");
+
+            var testMobile = phoneNumber.value;
+            var testEmail = emailAddress.value;
+            var testDate = date.value;
+
+            if(firstname.value.trim() == ""){
+                alert("Blank FirstName");
+                return false;
+            }
+            if(lastname.value.trim() == ""){
+                alert("Blank LastName");
+                return false;
+            }
+            if(password.value.trim() == "")
+            {
+                alert("Password cannot be empty!!!!");
+                return false;
+            }
+            if(password.value.trim().length < 8)
+            {
+                alert("Passsword too short!!!!");
+                return false;
+            }
+            if(password.value.trim() != confirmPassword.value.trim())
+            {
+                alert("Passsword fields do not match!!!");
+                return false;
+            }
+            var emailAddressRegx = /^([a-z 0-9\.-]+)@([a-z0-9-]+).([a-z]{2,8})(.[a-z]{2,8})$/;
+            if(!emailAddressRegx.test(testEmail))
+            {
+                alert("Invalid Email");
+                return false;
+            }
+            if(testMobile.trim() == "")
+            {
+                alert("Phone Number cannot be empty!!!");
+                return false;
+            }
+            var phoneNumberRegx = /^[7-9]\d{9}$/;
+            if(!phoneNumberRegx.test(testMobile))
+            {
+                alert("Invalid Mobile Number");
+                return false;
+            }
+            var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+            if(!dateformat.test(testDate))
+            {
+                alert("Invalid Date");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+s
+<div  class = "wrapper">
+    <div class="title">
+        Registration Form
+    </div>
+<form onsubmit = "return validateFields()"
+ action = "message.html">
+    <div class="form">
+        <div class="input_field">
+            <label>First Name</label>
+            <input id="fname" type="text" class="input">
+        </div>
+
+        <div class="input_field">
+            <label>Last Name</label>
+            <input id="lname" type="text" class="input">
+        </div>
+
+        <div class="input_field">
+            <label>Password</label>
+            <input id="pass" type="password" class="input">
+        </div>
+
+        <div class="input_field">
+            <label>Confirm Password</label>
+            <input id = "confirmPass" type="password" class="input">
+        </div>
+
+        <div class="input_field">
+            <label>Gender</label>
+            <div class="custom_select">
+                <select>
+                    <option value="">Select</option>
+                    <option value="">Male</option>
+                    <option value="">Female</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="input_field">
+            <label>Email Address</label>
+            <input id="emailAddress" type="text" class="input">
+        </div>
+
+        <div class="input_field">
+            <label>Phone Number</label>
+            <input id = "phnNumber" type="text" class="input">
+        </div>
+
+        <div class="input_field">
+            <label>Date</label>
+            <input id = "date" type="text" class="input">
+        </div>
+
+        <div class="input_field">
+            <label>Address</label>
+            <textarea class="textarea"></textarea>
+        </div>
+
+        <div class="input_field">
+            <label>Postal Code</label>
+            <textarea class="textarea"></textarea>
+        </div>
+
+        <div class="input_field terms">
+            <label class="check">
+                <input type = "checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <p>Agreed to terms and conditions</p>
+        </div>
+
+        <div class="input_field">
+            <input type = "submit" value = "Register" class="btn">
+        </div>
+
+    </div>
+</form>
+</div>
+</body>
+</html>
